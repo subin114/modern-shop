@@ -1,0 +1,13 @@
+// tailwind
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+// abstracts
+@import "./scss/abstracts/mixins";
+@import "./scss/abstracts/variables";
+
+// base
+@import "./scss/base/reset";
+@import "./scss/base/typo";
+@import "./scss/base/preset";
