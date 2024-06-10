@@ -11,27 +11,27 @@ a {
 
 // scrollbar custom
 ::-webkit-scrollbar {
-  width: 9px;
-  height: 20px;
+  width: 9px !important;
+  height: 20px !important;
 }
 
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 3px rgba(126, 126, 126, 0.226);
-  border-radius: 10px;
+  box-shadow: inset 0 0 3px rgba(126, 126, 126, 0.226) !important;
+  border-radius: 10px !important;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #46474736;
-  border-radius: 10px;
+  background: #46474736 !important;
+  border-radius: 10px !important;
 }
 
 // drag custom
-::-moz-selection {
-  color: $color-secondary;
-  background: #4647471f;
-}
+// ::-moz-selection {
+//   color: $color-secondary;
+//   background: $color-drag;
+// }
 
-::selection {
-  color: $color-secondary;
-  background: #4647471f;
-}
+// ::selection {
+//   color: $color-secondary;
+//   background: $color-drag;
+// }

@@ -5,7 +5,7 @@ import shoppingBagIcon from "../../../assets/icons/shopping-bag.svg";
 import userIcon from "../../../assets/icons/user.svg";
 import styles from "./Nav.module.scss";
 import { useNavigate } from "react-router-dom";
-// import { Box } from "@mui/material";
+import DarkMode from "../DarkMode/DarkMode";
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -39,7 +39,9 @@ const Nav = () => {
           <img src={shoppingBagIcon} alt="person" />
           <img src={userIcon} alt="person" />
 
-          <img src={userIcon} alt="moon" className={styles.mode} />
+          <span className={styles.mode}>
+            <DarkMode />
+          </span>
         </div>
       </div>
     </div>

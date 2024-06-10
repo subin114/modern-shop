@@ -40,7 +40,7 @@
     font-family: "Nunito Sans", sans-serif !important;
     letter-spacing: -0.5px;
     margin-top: 10px;
-    color: $color-secondary;
+    color: var(--color-secondary);
 
     span:nth-of-type(1) {
       font-weight: 600;
