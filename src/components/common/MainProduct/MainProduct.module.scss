@@ -1,15 +1,12 @@
 @import "../../../scss/abstracts/variables";
+@import "../../../scss/abstracts/mixins";
 
 .MainProduct {
   .sectionWrap {
     margin: 70px auto;
 
     h2 {
-      font-size: 30px;
-      font-weight: 500;
-      margin-bottom: 40px;
-      font-family: "Raleway", sans-serif;
-      text-align: center;
+      @include titleH2;
     }
 
     .sectionGrid {

@@ -23,7 +23,7 @@ const renderProductSection = (title: string, filteredProducts: Product[]) => {
 const MainProduct = () => {
   const productsLoadable = useRecoilValueLoadable(fetchProductsSelector);
   const { contents: products } = productsLoadable;
-  console.log("contents", products);
+  // console.log("contents", products);
 
   if (productsLoadable.state === "loading") {
     return <div>Loading...</div>;
