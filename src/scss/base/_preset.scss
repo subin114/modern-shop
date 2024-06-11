@@ -26,12 +26,12 @@ a {
 }
 
 // drag custom
-// ::-moz-selection {
-//   color: $color-secondary;
-//   background: $color-drag;
-// }
+::-moz-selection {
+  color: var(--color-secondary);
+  background: var(--color-drag);
+}
 
-// ::selection {
-//   color: $color-secondary;
-//   background: $color-drag;
-// }
+::selection {
+  color: var(--color-secondary);
+  background: var(--color-drag);
+}
