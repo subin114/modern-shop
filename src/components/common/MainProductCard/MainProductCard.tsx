@@ -1,7 +1,11 @@
 import styles from "./MainProductCard.module.scss";
-import { Product } from "../../types/Product";
+import { Product } from "../../../types/Product";
 
-const MainProductCard: React.FC<{ product: Product }> = ({ product }) => {
+interface MainProductCardProps {
+  product: Product;
+}
+
+const MainProductCard = ({ product }: MainProductCardProps) => {
   return (
     <div className={styles.MainProductCard}>
       <div className={styles.productImg}>
