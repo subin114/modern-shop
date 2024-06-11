@@ -1,8 +1,16 @@
 import { Link } from "react-router-dom";
-import heartIcon from "../../../assets/icons/heart.svg";
-import searchIcon from "../../../assets/icons/search.svg";
-import shoppingBagIcon from "../../../assets/icons/shopping-bag.svg";
-import userIcon from "../../../assets/icons/user.svg";
+// import heartIcon from "../../../assets/icons/heart.svg";
+// import searchIcon from "../../../assets/icons/search.svg";
+// import shoppingBagIcon from "../../../assets/icons/shopping-bag.svg";
+// import userIcon from "../../../assets/icons/user.svg";
+// import { ReactComponent as SearchIcon } from "../../../assets/icons/search.svg";
+// import { ReactComponent as HeartIcon } from "../../../assets/icons/heart.svg";
+// import { ReactComponent as ShoppingBagIcon } from "../../../assets/icons/shopping-bag.svg";
+// import { ReactComponent as UserIcon } from "../../../assets/icons/user.svg";
+import SearchIcon from "../../../assets/icons/heart.svg?react";
+import HeartIcon from "../../../assets/icons/heart.svg?react";
+import ShoppingBagIcon from "../../../assets/icons/heart.svg?react";
+import UserIcon from "../../../assets/icons/heart.svg?react";
 import styles from "./Nav.module.scss";
 import { useNavigate } from "react-router-dom";
 import DarkMode from "../DarkMode/DarkMode";
@@ -32,12 +40,14 @@ const Nav = () => {
 
         <div className={styles.icons}>
           <span className={styles.searchBar}>
-            <img src={searchIcon} alt="search" />
+            <SearchIcon className={styles.icon} />
             <input type="text" placeholder="search" />
           </span>
-          <img src={heartIcon} alt="heart" />
-          <img src={shoppingBagIcon} alt="person" />
-          <img src={userIcon} alt="person" />
+          {/* <img src={heartIcon} alt="heart" /> */}
+          <HeartIcon className={styles.icon} />
+
+          <ShoppingBagIcon className={styles.icon} />
+          <UserIcon className={styles.icon} />
 
           <span className={styles.mode}>
             <DarkMode />
