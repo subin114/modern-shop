@@ -4,13 +4,12 @@
 .CategoryProduct {
   height: auto;
   width: 70%;
-  border: 2px solid pink;
-  padding: 40px 0px;
+  padding: 20px 0px;
 
   .category {
     margin-bottom: 30px;
     border-bottom: 1px solid var(--color-drag);
-    padding: 5px 0px;
+    padding: 20px 0px;
     display: flex;
     align-items: center;
 

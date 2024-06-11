@@ -1,17 +1,16 @@
 import styles from "./BasicPagination.module.scss";
 import { Pagination, Stack } from "@mui/material";
-import { useState } from "react";
+import { PaginationProps } from "../../../types/PaginationProps";
 
-const BasicPagination = () => {
-  const [page, setPage] = useState(1);
+const BasicPagination: React.FC<PaginationProps> = ({ totalPages, currentPage, onPageChange }) => {
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-    setPage(value);
+    onPageChange(value);
   };
 
   return (
     <div className={styles.BasicPagination}>
       <Stack spacing={2}>
-        <Pagination count={2} page={page} onChange={handleChange} />
+        <Pagination count={totalPages} page={currentPage} onChange={handleChange} />
       </Stack>
     </div>
   );
