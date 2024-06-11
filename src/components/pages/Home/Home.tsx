@@ -1,6 +1,6 @@
 import styles from "./Home.module.scss";
 import Slider from "../../layout/Slider/Slider";
-import MainProduct from "./../../../common/MainProduct/MainProduct";
+import MainProduct from "../../common/MainProduct/MainProduct";
 
 const Home = () => {
   return (
