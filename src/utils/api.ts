@@ -8,7 +8,12 @@ const API_KEY = {
 export const fetchProductsSelector = selector({
   key: "fetchProductsSelector",
   get: async () => {
-    const response = await axios.get(`${API_KEY.key}/products`);
-    return response.data;
+    try {
+      const response = await axios.get(`${API_KEY.key}/products`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching products: ", error);
+      throw error;
+    }
   },
 });
