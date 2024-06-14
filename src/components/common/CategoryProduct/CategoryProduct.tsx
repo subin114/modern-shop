@@ -1,7 +1,7 @@
 import { Container, Grid } from "@mui/material";
 import styles from "./CategoryProduct.module.scss";
 import { useRecoilState } from "recoil";
-import MainProductCard from "../MainProductCard/MainProductCard";
+import ProductCard from "../ProductCard/ProductCard";
 import { Product } from "../../../types/Product";
 import BasicPagination from "../../layout/Paginate/BasicPagination";
 import { useAllCategory } from "../../../hooks/useAllCategory";
@@ -16,7 +16,7 @@ const CategoryProduct = () => {
       <Grid container>
         {paginatedProducts.map((product: Product) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={product.id} className={styles.sectionGrid}>
-            <MainProductCard product={product} />
+            <ProductCard product={product} />
           </Grid>
         ))}
       </Grid>

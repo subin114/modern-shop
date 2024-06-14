@@ -3,6 +3,7 @@ import CategoryProduct from "../../common/CategoryProduct/CategoryProduct";
 import Dropdown from "../../ui/Dropdown/Dropdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { Outlet } from "react-router-dom";
 
 const All = () => {
   return (
@@ -15,6 +16,8 @@ const All = () => {
       <h2>All Products</h2>
       <Dropdown />
       <CategoryProduct />
+
+      <Outlet />
     </div>
   );
 };

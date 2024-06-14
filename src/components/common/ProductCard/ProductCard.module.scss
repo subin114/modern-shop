@@ -1,6 +1,6 @@
 @import "../../../scss/abstracts/variables";
 
-.MainProductCard {
+.ProductCard {
   width: 95%;
 
   .productImg {
@@ -61,7 +61,7 @@
 }
 
 @media (max-width: 900px) {
-  .MainProductCard {
+  .ProductCard {
     margin-bottom: 25px;
 
     .productImg {
@@ -73,7 +73,7 @@
 }
 
 @media (max-width: 600px) {
-  .MainProductCard {
+  .ProductCard {
     margin-bottom: 25px;
 
     .productImg {

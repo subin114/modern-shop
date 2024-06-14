@@ -1,7 +1,7 @@
-import { useRecoilValueLoadable } from "recoil";
+import { useRecoilValue } from "recoil";
 import styles from "./MainProduct.module.scss";
 import { fetchProductsSelector } from "../../../utils/api";
-import MainProductCard from "../MainProductCard/MainProductCard";
+import ProductCard from "../ProductCard/ProductCard";
 import { Product } from "../../../types/Product";
 import { Container, Grid } from "@mui/material";
 
@@ -12,7 +12,7 @@ const renderProductSection = (title: string, filteredProducts: Product[]) => {
       <Grid container>
         {filteredProducts.map((product: Product) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={product.id} className={styles.sectionGrid}>
-            <MainProductCard product={product} />
+            <ProductCard product={product} />
           </Grid>
         ))}
       </Grid>
@@ -21,25 +21,15 @@ const renderProductSection = (title: string, filteredProducts: Product[]) => {
 };
 
 const MainProduct = () => {
-  const productsLoadable = useRecoilValueLoadable(fetchProductsSelector);
-  const { contents: products } = productsLoadable;
-  // console.log("contents", products);
+  const productsAll = useRecoilValue(fetchProductsSelector);
 
-  if (productsLoadable.state === "loading") {
-    return <div>Loading...</div>;
-  }
-
-  if (productsLoadable.state === "hasError") {
-    return <div>Error loading products</div>;
-  }
-
-  const fashionProducts = products
+  const fashionProducts = productsAll
     .filter((product: Product) => product.category === "men's clothing" || product.category === "women's clothing")
     .slice(0, 4);
 
-  const jeweleryProducts = products.filter((product: Product) => product.category === "jewelery").slice(0, 4);
+  const jeweleryProducts = productsAll.filter((product: Product) => product.category === "jewelery").slice(0, 4);
 
-  const digitalProducts = products.filter((product: Product) => product.category === "electronics").slice(0, 4);
+  const digitalProducts = productsAll.filter((product: Product) => product.category === "electronics").slice(0, 4);
 
   return (
     <div className={styles.MainProduct}>
