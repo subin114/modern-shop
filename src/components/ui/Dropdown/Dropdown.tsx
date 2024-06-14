@@ -2,8 +2,8 @@ import styles from "./Dropdown.module.scss";
 import { FormControl, InputLabel, MenuItem } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useRecoilState } from "recoil";
-import { sortStateAll } from "../../../hooks/useAllCategory";
 import { DropdownSort } from "../../../types/DropdownSort";
+import { sortStateAll } from "../../../utils/atoms/sortState";
 
 const Dropdown = () => {
   const [sort, setSort] = useRecoilState<DropdownSort>(sortStateAll);

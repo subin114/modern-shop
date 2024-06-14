@@ -1,25 +1,16 @@
 import { Container, Grid } from "@mui/material";
 import styles from "./CategoryProduct.module.scss";
 
-import { currentPageState, fetchAllCategorySelector, useAllCategory } from "../../../hooks/useAllCategory";
-import { useRecoilState, useRecoilValueLoadable } from "recoil";
+import { useRecoilState } from "recoil";
 import MainProductCard from "../MainProductCard/MainProductCard";
 import { Product } from "../../../types/Product";
 import BasicPagination from "../../layout/Paginate/BasicPagination";
+import { useAllCategory } from "../../../hooks/useAllCategory";
+import { currentPageState } from "../../../utils/atoms/currentPageState";
 
 const CategoryProduct = () => {
-  const allCategoryLoadable = useRecoilValueLoadable(fetchAllCategorySelector);
-
   const { paginatedProducts, totalPages } = useAllCategory();
   const [currentPage, setCurrentPage] = useRecoilState(currentPageState);
-
-  if (allCategoryLoadable.state === "loading") {
-    return <div>Loading...</div>;
-  }
-
-  if (allCategoryLoadable.state === "hasError") {
-    return <div>Error loading products</div>;
-  }
 
   return (
     <Container className={styles.CategoryProduct}>

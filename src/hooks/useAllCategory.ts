@@ -1,17 +1,8 @@
-import { selector, useRecoilValue, atom } from "recoil";
+import { selector, useRecoilValue } from "recoil";
 import { fetchProductsSelector } from "../utils/api";
 import { sortAndPaginate } from "../utils/sortAndPaginate";
-import { DropdownSort } from "../types/DropdownSort";
-
-export const currentPageState = atom<number>({
-  key: "currentPageState",
-  default: 1,
-});
-
-export const sortStateAll = atom<DropdownSort>({
-  key: "sortStateAll",
-  default: "none",
-});
+import { currentPageState } from "../utils/atoms/currentPageState";
+import { sortStateAll } from "../utils/atoms/sortState";
 
 export const fetchAllCategorySelector = selector({
   key: "fetchAllCategorySelector",

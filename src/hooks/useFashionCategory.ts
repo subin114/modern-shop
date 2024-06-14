@@ -1,29 +1,25 @@
-// import { selector, useRecoilValue, atom } from "recoil";
-// import { fetchProductsSelector } from "../utils/api";
-// import { sortAndPaginate } from "../utils/sortAndPaginate";
-// import { DropdownSort } from "../types/DropdownSort";
+import { selector, useRecoilValue } from "recoil";
+import { fetchProductsSelector } from "../utils/api";
+import { sortAndPaginate } from "../utils/sortAndPaginate";
+import { Product } from "../types/Product";
+import { currentPageState } from "../utils/atoms/currentPageState";
+import { sortStateAll } from "../utils/atoms/sortState";
 
-// export const currentPageState = atom<number>({
-//   key: "currentPageState",
-//   default: 1,
-// });
+export const fetchFashionCategorySelector = selector({
+  key: "fetchAllCategorySelector",
+  get: ({ get }) => {
+    const products = get(fetchProductsSelector);
+    const currentPage = get(currentPageState);
+    const sortAllProducts = get(sortStateAll);
 
-// export const sortStateAll = atom<DropdownSort>({
-//   key: "sortStateAll",
-//   default: "none",
-// });
+    const fashionProducts = products.filter(
+      (product: Product) => product.category === "men's clothing" || product.category === "women's clothing"
+    );
 
-// export const fetchAllCategorySelector = selector({
-//   key: "fetchAllCategorySelector",
-//   get: ({ get }) => {
-//     const products = get(fetchProductsSelector);
-//     const currentPage = get(currentPageState);
-//     const sortAllProducts = get(sortStateAll);
+    return sortAndPaginate(fashionProducts, sortAllProducts, currentPage);
+  },
+});
 
-//     return sortAndPaginate(products, sortAllProducts, currentPage);
-//   },
-// });
-
-// export const useAllCategory = () => {
-//   return useRecoilValue(fetchAllCategorySelector);
-// };
+export const useFashionCategory = () => {
+  return useRecoilValue(fetchFashionCategorySelector);
+};
