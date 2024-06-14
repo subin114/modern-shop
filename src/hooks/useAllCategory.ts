@@ -12,8 +12,8 @@ const filterProductsByCategory = (products: Product[], category: string) => {
       return products.filter(
         (product: Product) => product.category === "men's clothing" || product.category === "women's clothing"
       );
-    case "Jewelry":
-      return products.filter((product: Product) => product.category === "jewelry");
+    case "Jewelery":
+      return products.filter((product: Product) => product.category === "jewelery");
     case "Digital":
       return products.filter((product: Product) => product.category === "electronics");
     default:

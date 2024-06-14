@@ -5,7 +5,7 @@ import Home from "../components/pages/Home/Home";
 import NotFound from "../components/pages/NotFound/NotFound";
 import All from "../components/pages/All/All";
 import Fashion from "../components/pages/Fashion/Fashion";
-import Jewelry from "../components/pages/Jewelry/Jewelry";
+import Jewelery from "../components/pages/Jewelery/Jewelery";
 import Digital from "../components/pages/Digital/Digital";
 
 const Router = () => {
@@ -15,7 +15,7 @@ const Router = () => {
 
       <Route path="/all" element={<All />} />
       <Route path="/fashion" element={<Fashion />} />
-      <Route path="/jewelry" element={<Jewelry />} />
+      <Route path="/jewelery" element={<Jewelery />} />
       <Route path="/digital" element={<Digital />} />
 
       <Route path="*" element={<NotFound />} />

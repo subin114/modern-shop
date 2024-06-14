@@ -24,8 +24,8 @@ const Nav = () => {
           <Link to="/fashion" className={styles.menu} onClick={() => setCategory("Fashion")}>
             Fashion
           </Link>
-          <Link to="jewelry" className={styles.menu} onClick={() => setCategory("Jewelry")}>
-            Jewelry
+          <Link to="jewelery" className={styles.menu} onClick={() => setCategory("Jewelery")}>
+            Jewelery
           </Link>
           <Link to="/digital" className={styles.menu} onClick={() => setCategory("Digital")}>
             Digital

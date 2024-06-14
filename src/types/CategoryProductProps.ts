@@ -1,3 +1,3 @@
 export interface CategoryProductProps {
-  category: "All" | "Fashion" | "Jewelry" | "Digital";
+  category: "All" | "Fashion" | "Jewelery" | "Digital";
 }

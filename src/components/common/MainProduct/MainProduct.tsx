@@ -37,14 +37,14 @@ const MainProduct = () => {
     .filter((product: Product) => product.category === "men's clothing" || product.category === "women's clothing")
     .slice(0, 4);
 
-  const jewelryProducts = products.filter((product: Product) => product.category === "jewelery").slice(0, 4);
+  const jeweleryProducts = products.filter((product: Product) => product.category === "jewelery").slice(0, 4);
 
   const digitalProducts = products.filter((product: Product) => product.category === "electronics").slice(0, 4);
 
   return (
     <div className={styles.MainProduct}>
       {renderProductSection("Our Fashion Products", fashionProducts)}
-      {renderProductSection("Our Jewelry Products", jewelryProducts)}
+      {renderProductSection("Our Jewelery Products", jeweleryProducts)}
       {renderProductSection("Our Digital Products", digitalProducts)}
     </div>
   );
