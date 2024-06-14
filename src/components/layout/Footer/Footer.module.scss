@@ -1,3 +1,60 @@
+@import "../../../scss/abstracts/variables";
+
 .Footer {
   font-family: "Raleway", sans-serif;
+  background-color: var(--color-tertiary);
+  width: 100%;
+  height: 170px;
+  display: flex;
+  flex-direction: row;
+  padding: 0 60px;
+
+  .FooterLeft {
+    width: 1400px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      font-family: "Raleway", sans-serif;
+    }
+
+    ul {
+      display: flex;
+      font-size: 11px;
+      font-weight: 500;
+      margin: 10px 0 5px;
+
+      li {
+        margin-right: 10px;
+
+        &:not(:nth-of-type(4))::after {
+          content: "|";
+          margin-left: 10px;
+        }
+      }
+    }
+
+    span {
+      font-family: "Nunito Sans", sans-serif;
+      font-size: 12px;
+    }
+  }
+
+  .FooterRight {
+    width: calc(100% - 1400px);
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 70px;
+
+    .icon {
+      margin-left: 20px;
+      cursor: pointer;
+    }
+  }
 }
