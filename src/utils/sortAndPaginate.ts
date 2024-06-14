@@ -1,9 +1,9 @@
 import { DropdownSort } from "../types/DropdownSort";
 import { Product } from "../types/Product";
 
-export const sortAndPaginate = (products: Product[], sortAllProducts: DropdownSort, currentPage: number) => {
+export const sortAndPaginate = (filteredCategory: Product[], sortAllProducts: DropdownSort, currentPage: number) => {
   const pageSize = 8;
-  const sortProductsAll = [...products];
+  const sortProductsAll = [...filteredCategory];
 
   if (sortAllProducts === "price-high") {
     sortProductsAll.sort((a, b) => b.price - a.price);

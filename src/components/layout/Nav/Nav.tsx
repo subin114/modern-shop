@@ -6,25 +6,28 @@ import UserIcon from "../../../assets/icons/user.svg?react";
 import styles from "./Nav.module.scss";
 import { useNavigate } from "react-router-dom";
 import DarkMode from "../DarkMode/DarkMode";
+import { currentCategoryState } from "../../../utils/atoms/currentCategoryState";
+import { useRecoilState } from "recoil";
 
 const Nav = () => {
   const navigate = useNavigate();
+  const [category, setCategory] = useRecoilState(currentCategoryState);
 
   return (
     <div className={styles.Nav}>
       <div className={styles.NavTop}>Welcome to Modern Shop!</div>
       <div className={styles.NavBottom}>
         <div className={styles.menus}>
-          <Link to="/all" className={styles.menu}>
+          <Link to="/all" className={styles.menu} onClick={() => setCategory("All")}>
             All
           </Link>
-          <Link to="/fashion" className={styles.menu}>
+          <Link to="/fashion" className={styles.menu} onClick={() => setCategory("Fashion")}>
             Fashion
           </Link>
-          <Link to="jewelry" className={styles.menu}>
+          <Link to="jewelry" className={styles.menu} onClick={() => setCategory("Jewelry")}>
             Jewelry
           </Link>
-          <Link to="/digital" className={styles.menu}>
+          <Link to="/digital" className={styles.menu} onClick={() => setCategory("Digital")}>
             Digital
           </Link>
         </div>

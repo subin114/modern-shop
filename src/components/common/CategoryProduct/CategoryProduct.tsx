@@ -1,6 +1,5 @@
 import { Container, Grid } from "@mui/material";
 import styles from "./CategoryProduct.module.scss";
-
 import { useRecoilState } from "recoil";
 import MainProductCard from "../MainProductCard/MainProductCard";
 import { Product } from "../../../types/Product";
