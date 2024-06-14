@@ -1,12 +1,12 @@
-import styles from "./AllProduct.module.scss";
+import styles from "./All.module.scss";
 import CategoryProduct from "../../common/CategoryProduct/CategoryProduct";
-import Dropdown from "./../../ui/Dropdown/Dropdown";
+import Dropdown from "../../ui/Dropdown/Dropdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight } from "./../../../../node_modules/@fortawesome/free-solid-svg-icons";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
-const AllProduct = () => {
+const All = () => {
   return (
-    <div className={styles.AllProduct}>
+    <div className={styles.All}>
       <div className={styles.category}>
         Category
         <FontAwesomeIcon icon={faAngleRight} className={styles.arrowIcon} />
@@ -19,4 +19,4 @@ const AllProduct = () => {
   );
 };
 
-export default AllProduct;
+export default All;

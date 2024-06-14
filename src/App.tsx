@@ -64,7 +64,7 @@ function App() {
     [mode]
   );
 
-  console.log("App theme mode:", mode);
+  // console.log("App theme mode:", mode);
 
   useEffect(() => {
     if (mode === "dark") {

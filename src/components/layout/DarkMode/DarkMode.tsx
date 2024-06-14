@@ -9,7 +9,7 @@ const DarkMode = () => {
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
 
-  console.log("Current theme mode:", theme.palette.mode);
+  // console.log("Current theme mode:", theme.palette.mode);
 
   return (
     <>
