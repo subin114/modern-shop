@@ -1,31 +1,34 @@
 import styles from "./Dropdown.module.scss";
 import { FormControl, InputLabel, MenuItem } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { sortStateAll } from "../../../hooks/useAllCategory";
 
 const Dropdown = () => {
-  const [age, setAge] = useState("");
+  const [sort, setSort] = useRecoilState(sortStateAll);
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value);
+    setSort(event.target.value as string);
   };
 
   return (
     <div className={styles.Dropdown}>
-      <FormControl sx={{ m: 1, minWidth: 110 }} size="small">
-        <InputLabel id="demo-select-small-label">sort</InputLabel>
+      <FormControl variant="standard" sx={{ minWidth: 150 }}>
+        <InputLabel id="demo-simple-select-standard-label">Sort</InputLabel>
         <Select
-          labelId="demo-select-small-label"
-          id="demo-select-small"
-          value={age}
-          label="Age"
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
+          value={sort}
           onChange={handleChange}
+          label="Sort"
         >
-          <MenuItem value="">
+          <MenuItem value="none">
             <em>None</em>
           </MenuItem>
-          <MenuItem value={10}>가격순</MenuItem>
-          <MenuItem value={20}>인기순</MenuItem>
+          <MenuItem value="price-high">Highest Price</MenuItem>
+          <MenuItem value="price-low">Lowest Price</MenuItem>
+          <MenuItem value="rating-high">Highest Rating</MenuItem>
+          <MenuItem value="rating-low">Lowest Rating</MenuItem>
         </Select>
       </FormControl>
     </div>
