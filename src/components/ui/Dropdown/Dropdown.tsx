@@ -3,12 +3,13 @@ import { FormControl, InputLabel, MenuItem } from "@mui/material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useRecoilState } from "recoil";
 import { sortStateAll } from "../../../hooks/useAllCategory";
+import { DropdownSort } from "../../../types/DropdownSort";
 
 const Dropdown = () => {
-  const [sort, setSort] = useRecoilState(sortStateAll);
+  const [sort, setSort] = useRecoilState<DropdownSort>(sortStateAll);
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setSort(event.target.value as string);
+  const handleChange = (e: SelectChangeEvent) => {
+    setSort(e.target.value as DropdownSort);
   };
 
   return (
