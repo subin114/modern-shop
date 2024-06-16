@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import SearchIcon from "../../../assets/icons/search.svg?react";
 import HeartIcon from "../../../assets/icons/heart.svg?react";
 import ShoppingBagIcon from "../../../assets/icons/shopping-bag.svg?react";
 import UserIcon from "../../../assets/icons/user.svg?react";
@@ -8,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import DarkMode from "../DarkMode/DarkMode";
 import { currentCategoryState } from "../../../utils/atoms/currentCategoryState";
 import { useRecoilState } from "recoil";
+import SearchInput from "../SearchInput/SearchInput";
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -35,8 +35,7 @@ const Nav = () => {
 
         <div className={styles.icons}>
           <span className={styles.searchBar}>
-            <SearchIcon className={styles.icon} />
-            <input type="text" placeholder="search" />
+            <SearchInput />
           </span>
           <HeartIcon className={styles.icon} />
           <ShoppingBagIcon className={styles.icon} />
