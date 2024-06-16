@@ -6,7 +6,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const navigate = useNavigate();
 
   return (
-    <div className={styles.ProductCard} onClick={() => navigate(`/category/${product.id}`)}>
+    <div className={styles.ProductCard} onClick={() => navigate(`/product/${product.id}`)}>
       <div className={styles.productImg}>
         <div className={styles.productImgHover}>
           <img src={product?.image} alt={product?.title} />
