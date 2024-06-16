@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import DarkMode from "../DarkMode/DarkMode";
 import { currentCategoryState } from "../../../utils/atoms/currentCategoryState";
 import { useRecoilState } from "recoil";
-import SearchInput from "../SearchInput/SearchInput";
+import SearchForm from "../SearchForm/SearchForm";
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const Nav = () => {
 
         <div className={styles.icons}>
           <span className={styles.searchBar}>
-            <SearchInput />
+            <SearchForm />
           </span>
           <HeartIcon className={styles.icon} />
           <ShoppingBagIcon className={styles.icon} />
