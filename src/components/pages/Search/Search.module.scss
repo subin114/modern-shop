@@ -1,0 +1,30 @@
+@import "../../../scss/abstracts/variables";
+@import "../../../scss/abstracts/mixins";
+
+.Search {
+  min-height: calc(100vh - 260px);
+  height: auto;
+  padding: 80px 0;
+
+  .productLength {
+    font-size: 14px;
+    color: var(--color-point);
+    font-weight: 600;
+    margin-right: 5px;
+  }
+
+  .sectionWrap {
+    .searchResult {
+      font-family: "Nunito Sans", sans-serif;
+      display: block;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--color-tertiary);
+    }
+
+    .sectionGrid {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
