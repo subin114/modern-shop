@@ -6,13 +6,15 @@ import styles from "./Nav.module.scss";
 import { useNavigate } from "react-router-dom";
 import DarkMode from "../DarkMode/DarkMode";
 import { currentCategoryState } from "../../../utils/atoms/currentCategoryState";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState, useRecoilValue } from "recoil";
 import SearchForm from "../SearchForm/SearchForm";
 import { Badge } from "@mui/material";
+import { cartItemCountState } from "../../../utils/atoms/cartItemCountState";
 
 const Nav = () => {
   const navigate = useNavigate();
-  const [category, setCategory] = useRecoilState(currentCategoryState);
+  const setCategory = useSetRecoilState(currentCategoryState);
+  const cartItemCount = useRecoilValue(cartItemCountState);
 
   return (
     <div className={styles.Nav}>
@@ -40,7 +42,7 @@ const Nav = () => {
           </span>
           <HeartIcon className={styles.icon} />
           <ShoppingBagIcon className={styles.icon} onClick={() => navigate("/cart")} />
-          <Badge badgeContent={1} className={styles.badge}></Badge>
+          <Badge badgeContent={cartItemCount} className={styles.badge}></Badge>
           <UserIcon className={styles.icon} />
           <span className={styles.mode}>
             <DarkMode />

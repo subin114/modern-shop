@@ -4,10 +4,16 @@ import { IconButton, Button } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import QuantitySelector from "./../../ui/QuantitySelector/QuantitySelector";
 import { cartItemState } from "../../../utils/atoms/cartItemState";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
+import { useNavigate } from "react-router-dom";
+import { cartItemCountState } from "../../../utils/atoms/cartItemCountState";
 
 const Cart = () => {
+  const navigate = useNavigate();
+
   const [cartItems, setCartItems] = useRecoilState(cartItemState);
+
+  const setCartItemCount = useSetRecoilState(cartItemCountState);
 
   const handleQuantityChange = (id: number, updateQuantity: number) => {
     const updateCartItemsCount = cartItems.map((item) =>
@@ -18,6 +24,11 @@ const Cart = () => {
   };
 
   const handleDelete = (id: number) => {
+    const deletedItem = cartItems.find((item) => item.id === id);
+    if (deletedItem) {
+      setCartItemCount((prevCount) => prevCount - deletedItem.quantity);
+    }
+
     const updateCartItems = cartItems.filter((item) => item.id !== id);
     setCartItems(updateCartItems);
   };
@@ -53,7 +64,7 @@ const Cart = () => {
                     onChange={(updateQuantity) => handleQuantityChange(item.id, updateQuantity)}
                   />
                 </td>
-                <td className={styles.price}>{item.price}</td>
+                <td className={styles.price}>${(item.price * item.quantity).toFixed(2)}</td>
                 <td className={styles.delete}>
                   <IconButton aria-label="delete" size="small" onClick={() => handleDelete(item.id)}>
                     <DeleteIcon fontSize="small" />
@@ -67,19 +78,19 @@ const Cart = () => {
         <div className={styles.payment}>
           <div>
             <span>
-              <b>Total :</b> $1230
+              <b>Total :</b> ${cartItems.reduce((acc, cur) => acc + cur.price * cur.quantity, 0).toFixed(2)}
             </span>
             <span>
               <b>Discount :</b> $0
             </span>
             <span>
-              <b>Total Amount :</b> $0
+              <b>Total Amount :</b> ${cartItems.reduce((acc, cur) => acc + cur.price * cur.quantity, 0).toFixed(2)}
             </span>
           </div>
           <Button variant="outlined" color="secondary" className={styles.cartBtn}>
             PROCEED TO CHEACKOUT
           </Button>
-          <Button variant="outlined" color="secondary" className={styles.heartBtn}>
+          <Button variant="outlined" color="secondary" className={styles.heartBtn} onClick={() => navigate("/all")}>
             CONTINUE SHOPPING
           </Button>
         </div>

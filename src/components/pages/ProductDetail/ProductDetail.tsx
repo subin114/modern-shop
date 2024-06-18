@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import styles from "./ProductDetail.module.scss";
-import { useRecoilState, useRecoilValueLoadable } from "recoil";
+import { useRecoilState, useRecoilValueLoadable, useSetRecoilState } from "recoil";
 import { fetchProductDetailSelector } from "../../../utils/atoms/productDetailState";
 import { Button } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,6 +10,7 @@ import QuantitySelector from "../../ui/QuantitySelector/QuantitySelector";
 import { cartItemState } from "../../../utils/atoms/cartItemState";
 import { CartItem } from "../../../types/cartItem";
 import { useState } from "react";
+import { cartItemCountState } from "../../../utils/atoms/cartItemCountState";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -18,6 +19,8 @@ const ProductDetail = () => {
   const [cartItems, setCartItems] = useRecoilState(cartItemState);
   console.log("cartItems", cartItems);
   const [quantity, setQuantity] = useState(1);
+
+  const setCartItemCount = useSetRecoilState(cartItemCountState);
 
   const addToCart = () => {
     const newItem: CartItem = {
@@ -39,16 +42,9 @@ const ProductDetail = () => {
         return [...prevCartItems, newItem];
       }
     });
-  };
 
-  // const newItem: CartItem = {
-  //   id: product.id,
-  //   image: product.image,
-  //   title: product.title,
-  //   price: product.price,
-  //   quantity: 1,
-  // };
-  // setCartItems((prevCartItems) => [...prevCartItems, newItem]);
+    setCartItemCount((prevCount) => prevCount + quantity);
+  };
 
   if (productLoadable.state === "loading") {
     return <div>Loading...</div>;
@@ -59,7 +55,6 @@ const ProductDetail = () => {
   }
 
   const product = productLoadable.contents;
-  console.log("상품 상세 정보 하나씩", product);
 
   return (
     <div className={styles.ProductDetail}>
