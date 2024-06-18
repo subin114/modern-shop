@@ -1,0 +1,140 @@
+@import "../../../scss/abstracts/variables";
+@import "../../../scss/abstracts/mixins";
+
+.Cart {
+  min-height: calc(100vh - 260px);
+  height: auto;
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
+  width: 70%;
+  font-family: "Nunito Sans", sans-serif;
+
+  .cartTop {
+    h2 {
+      @include titleH2;
+      margin-top: -20px;
+    }
+  }
+
+  .cartBottom {
+    display: flex;
+    justify-content: space-between;
+
+    table {
+      width: 75%;
+      height: auto;
+      border-collapse: collapse;
+      table-layout: fixed;
+      text-align: center;
+      font-size: 15px;
+
+      thead {
+        display: block;
+        width: 100%;
+        height: 40px;
+        text-align: center;
+        font-weight: 700;
+        border-top: 1px solid var(--color-tertiary-light);
+        border-bottom: 1px solid var(--color-tertiary-light);
+
+        tr {
+          display: table;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: var(--color-secondary);
+        }
+      }
+
+      .num {
+        width: 5%;
+      }
+
+      .product {
+        width: 15%;
+      }
+
+      .title {
+        width: 40%;
+      }
+
+      .count {
+        width: 20%;
+      }
+
+      .price {
+        width: 10%;
+      }
+
+      .delete {
+        width: 10%;
+      }
+
+      tbody {
+        display: block;
+        width: 100%;
+        height: auto;
+
+        tr {
+          display: table;
+          width: 100%;
+          height: 90px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-bottom: 1px solid var(--color-tertiary-light);
+        }
+      }
+    }
+
+    .payment {
+      width: 20%;
+      padding: 0px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        font-size: 15px;
+        margin-bottom: 40px;
+
+        span {
+          margin-bottom: 4px;
+        }
+
+        span:nth-of-type(3) {
+          margin-top: 10px;
+          padding-top: 10px;
+          border-top: 1px solid var(--color-tertiary-light);
+        }
+      }
+
+      .cartBtn,
+      .heartBtn {
+        border-radius: 0;
+        font-size: 12px;
+        margin-right: 15px;
+        width: 100%;
+        height: 40px;
+      }
+
+      .cartBtn {
+        background-color: var(--color-secondary);
+        color: var(--color-primary);
+        border-color: var(--color-secondary);
+        margin-bottom: 10px;
+      }
+
+      .heartBtn {
+        border-color: var(--color-secondary);
+      }
+    }
+  }
+}

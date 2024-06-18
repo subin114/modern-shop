@@ -9,6 +9,7 @@ import Jewelery from "../components/pages/Jewelery/Jewelery";
 import Digital from "../components/pages/Digital/Digital";
 import ProductDetail from "../components/pages/ProductDetail/ProductDetail";
 import NotFound from "../components/pages/NotFound/NotFound";
+import Cart from "../components/pages/Cart/Cart";
 
 const Router = () => {
   return (
@@ -23,6 +24,7 @@ const Router = () => {
       <Route path="/fashion" element={<Fashion />} />
       <Route path="/jewelery" element={<Jewelery />} />
       <Route path="/digital" element={<Digital />} />
+      <Route path="/cart" element={<Cart />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

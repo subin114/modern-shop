@@ -1,0 +1,28 @@
+.QuantitySelector {
+  font-family: "Nunito Sans", sans-serif;
+
+  span {
+    text-align: center;
+  }
+
+  button {
+    cursor: pointer;
+    border: 1px solid #ccc;
+    width: 24px;
+    height: 24px;
+
+    .quantityIcon {
+      font-size: 11px;
+      color: var(--color-secondary);
+    }
+  }
+
+  span {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+    font-size: 15px;
+  }
+}

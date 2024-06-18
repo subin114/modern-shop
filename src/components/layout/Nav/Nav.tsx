@@ -8,6 +8,7 @@ import DarkMode from "../DarkMode/DarkMode";
 import { currentCategoryState } from "../../../utils/atoms/currentCategoryState";
 import { useRecoilState } from "recoil";
 import SearchForm from "../SearchForm/SearchForm";
+import { Badge } from "@mui/material";
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -38,7 +39,8 @@ const Nav = () => {
             <SearchForm />
           </span>
           <HeartIcon className={styles.icon} />
-          <ShoppingBagIcon className={styles.icon} />
+          <ShoppingBagIcon className={styles.icon} onClick={() => navigate("/cart")} />
+          <Badge badgeContent={1} className={styles.badge}></Badge>
           <UserIcon className={styles.icon} />
           <span className={styles.mode}>
             <DarkMode />

@@ -4,8 +4,9 @@ import { useRecoilValueLoadable } from "recoil";
 import { fetchProductDetailSelector } from "../../../utils/atoms/productDetailState";
 import { Button } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMinus, faPlus, faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
+import QuantitySelector from "../../ui/QuantitySelector/QuantitySelector";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -21,7 +22,7 @@ const ProductDetail = () => {
   }
 
   const product = productLoadable.contents;
-  console.log(product);
+  console.log("상품 상세 정보 하나씩", product);
 
   return (
     <div className={styles.ProductDetail}>
@@ -39,15 +40,7 @@ const ProductDetail = () => {
           {product.rating.rate}
         </span>
         <p>{product.description}</p>
-        <div className={styles.quantitySelector}>
-          <button>
-            <FontAwesomeIcon icon={faMinus} className={styles.quantityIcon} />
-          </button>
-          <span>count</span>
-          <button>
-            <FontAwesomeIcon icon={faPlus} className={styles.quantityIcon} />
-          </button>
-        </div>
+        <QuantitySelector />
         <span className={styles.btnWrap}>
           <Button variant="outlined" color="secondary" className={styles.cartBtn}>
             ADD TO CART
