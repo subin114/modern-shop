@@ -65,34 +65,6 @@ const Cart = () => {
                 </IconButton>
               </td>
             </tr>
-            <tr>
-              <th className={styles.num}>1</th>
-              <td className={styles.product}>Cy Ganderton</td>
-              <td className={styles.title}>Quality Control Specialist</td>
-              <td className={styles.count}>
-                <QuantitySelector />
-              </td>
-              <td className={styles.price}>Blue</td>
-              <td className={styles.delete}>
-                <IconButton aria-label="delete" size="small">
-                  <DeleteIcon fontSize="small" />
-                </IconButton>
-              </td>
-            </tr>
-            <tr>
-              <th className={styles.num}>1</th>
-              <td className={styles.product}>Cy Ganderton</td>
-              <td className={styles.title}>Quality Control Specialist</td>
-              <td className={styles.count}>
-                <QuantitySelector />
-              </td>
-              <td className={styles.price}>Blue</td>
-              <td className={styles.delete}>
-                <IconButton aria-label="delete" size="small">
-                  <DeleteIcon fontSize="small" />
-                </IconButton>
-              </td>
-            </tr>
           </tbody>
         </table>
 
