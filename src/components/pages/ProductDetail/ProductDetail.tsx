@@ -1,17 +1,54 @@
 import { useParams } from "react-router-dom";
 import styles from "./ProductDetail.module.scss";
-import { useRecoilValueLoadable } from "recoil";
+import { useRecoilState, useRecoilValueLoadable } from "recoil";
 import { fetchProductDetailSelector } from "../../../utils/atoms/productDetailState";
 import { Button } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import QuantitySelector from "../../ui/QuantitySelector/QuantitySelector";
+import { cartItemState } from "../../../utils/atoms/cartItemState";
+import { CartItem } from "../../../types/cartItem";
+import { useState } from "react";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
-
   const productLoadable = useRecoilValueLoadable(fetchProductDetailSelector(id || ""));
+
+  const [cartItems, setCartItems] = useRecoilState(cartItemState);
+  console.log("cartItems", cartItems);
+  const [quantity, setQuantity] = useState(1);
+
+  const addToCart = () => {
+    const newItem: CartItem = {
+      id: product.id,
+      image: product.image,
+      title: product.title,
+      price: product.price,
+      quantity: quantity,
+    };
+
+    setCartItems((prevCartItems) => {
+      const isItemExists = prevCartItems.some((item) => item.id === product.id);
+
+      if (isItemExists) {
+        return prevCartItems.map((item) =>
+          item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item
+        );
+      } else {
+        return [...prevCartItems, newItem];
+      }
+    });
+  };
+
+  // const newItem: CartItem = {
+  //   id: product.id,
+  //   image: product.image,
+  //   title: product.title,
+  //   price: product.price,
+  //   quantity: 1,
+  // };
+  // setCartItems((prevCartItems) => [...prevCartItems, newItem]);
 
   if (productLoadable.state === "loading") {
     return <div>Loading...</div>;
@@ -40,9 +77,9 @@ const ProductDetail = () => {
           {product.rating.rate}
         </span>
         <p>{product.description}</p>
-        <QuantitySelector />
+        <QuantitySelector value={quantity} onChange={setQuantity} />
         <span className={styles.btnWrap}>
-          <Button variant="outlined" color="secondary" className={styles.cartBtn}>
+          <Button variant="outlined" color="secondary" className={styles.cartBtn} onClick={addToCart}>
             ADD TO CART
           </Button>
           <Button variant="outlined" color="secondary" className={styles.heartBtn}>

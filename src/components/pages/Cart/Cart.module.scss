@@ -56,6 +56,13 @@
 
       .product {
         width: 15%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: 30px;
+        }
       }
 
       .title {
