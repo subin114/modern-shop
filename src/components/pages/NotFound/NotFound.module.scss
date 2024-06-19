@@ -1,20 +1,21 @@
+@import "../../../scss/abstracts/mixins";
+
 .NotFound {
-  display: flex;
-  flex-direction: column;
+  @include layout;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 260px);
 
   strong {
     font-size: 130px;
+    margin-top: -45px;
   }
 
   span {
+    margin-bottom: 10px;
     font-size: 20px;
     font-weight: 600;
-    letter-spacing: -0.2px;
-    margin-bottom: 10px;
     text-align: center;
+    letter-spacing: -0.2px;
   }
 
   p {

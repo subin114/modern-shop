@@ -4,16 +4,25 @@ import { IconButton, Button } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import QuantitySelector from "./../../ui/QuantitySelector/QuantitySelector";
 import { cartItemState } from "../../../utils/atoms/cartItemState";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import { cartItemCountState } from "../../../utils/atoms/cartItemCountState";
+import { authState } from "../../../utils/atoms/authState";
 
 const Cart = () => {
   const navigate = useNavigate();
-
   const [cartItems, setCartItems] = useRecoilState(cartItemState);
-
   const setCartItemCount = useSetRecoilState(cartItemCountState);
+  const auth = useRecoilValue(authState);
+
+  /** 로그인 상태 확인 */
+  const handleProceedToCheckout = () => {
+    if (!auth.isLogin) {
+      alert("This service requires login.");
+      navigate("/login");
+      return;
+    }
+  };
 
   /** cart - quantity 값 변경 */
   const handleQuantityChange = (id: number, updateQuantity: number) => {
@@ -99,11 +108,11 @@ const Cart = () => {
               <b>Total Amount :</b> ${cartItems.reduce((acc, cur) => acc + cur.price * cur.quantity, 0).toFixed(2)}
             </span>
           </div>
-          <Button variant="outlined" color="secondary" className={styles.cartBtn}>
-            PROCEED TO CHEACKOUT
+          <Button variant="outlined" color="secondary" className={styles.cartBtn} onClick={handleProceedToCheckout}>
+            Proceed to checkout
           </Button>
-          <Button variant="outlined" color="secondary" className={styles.heartBtn} onClick={() => navigate("/all")}>
-            CONTINUE SHOPPING
+          <Button variant="outlined" color="secondary" className={styles.shoppingBtn} onClick={() => navigate("/all")}>
+            Continue shopping
           </Button>
         </div>
       </div>

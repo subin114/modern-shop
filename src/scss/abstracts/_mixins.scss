@@ -1,7 +1,71 @@
-@mixin titleH2 {
+// layout (except categoryLayout)
+@mixin layout {
+  width: 70%;
+  min-height: calc(100vh - 260px);
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 80px 0;
+  @include txt-normal;
+}
+
+// category
+@mixin category-layout {
+  width: 70%;
+  height: auto;
+  margin: auto;
+  padding: 20px 0px;
+}
+
+@mixin category-specify {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 20px 0px;
+  border-bottom: 1px solid var(--color-drag);
+}
+
+@mixin category-arrow-icon {
+  margin: 0 5px;
+  font-size: 13px;
+}
+
+@mixin category-section-grid {
+  display: flex;
+  justify-content: center;
+}
+
+// button
+@mixin btn-column-common {
+  width: 100%;
+  height: 40px;
+  margin-right: 15px;
+  border-radius: 2px;
+  font-size: 12px;
+  border-color: var(--color-secondary);
+}
+
+@mixin btn-column-top {
+  margin-bottom: 10px;
+  background-color: var(--color-secondary) !important;
+  color: var(--color-primary);
+  border-color: var(--color-secondary);
+}
+
+// txt
+@mixin title-h2 {
+  margin-bottom: 40px;
+  @include txt-point;
   font-size: 30px;
   font-weight: 500;
-  font-family: "Raleway", sans-serif;
   text-align: center;
-  margin-bottom: 40px;
+}
+
+@mixin txt-point {
+  font-family: "Raleway", sans-serif;
+}
+
+@mixin txt-normal {
+  font-family: "Nunito Sans", sans-serif;
 }

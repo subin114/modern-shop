@@ -1,7 +1,7 @@
 @import "../../../scss/abstracts/variables";
 @import "../../../scss/abstracts/mixins";
 
-.Login {
+.SignUp {
   @include layout;
   justify-content: center;
   width: 18%;
@@ -19,6 +19,12 @@
       margin-bottom: 3px;
       font-size: 14px;
       font-weight: 600;
+
+      &::before {
+        content: "*";
+        margin-right: 3px;
+        color: var(--color-point);
+      }
     }
 
     input {
@@ -30,27 +36,9 @@
     }
   }
 
-  .loginBtn,
   .signUpBtn {
     @include btn-column-common;
-  }
-
-  .loginBtn {
     @include btn-column-top;
     margin: 12px 0;
-  }
-
-  .find {
-    margin-top: 32px;
-    border-top: 1px solid var(--color-tertiary);
-    padding-top: 24px;
-    font-size: 13px;
-
-    b {
-      margin-left: 1px;
-      color: var(--color-point);
-      text-decoration: underline;
-      cursor: pointer;
-    }
   }
 }

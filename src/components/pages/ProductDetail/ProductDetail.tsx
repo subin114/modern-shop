@@ -1,6 +1,6 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./ProductDetail.module.scss";
-import { useRecoilState, useRecoilValueLoadable, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useRecoilValueLoadable, useSetRecoilState } from "recoil";
 import { fetchProductDetailSelector } from "../../../utils/atoms/productDetailState";
 import { Button } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,6 +11,7 @@ import { cartItemState } from "../../../utils/atoms/cartItemState";
 import { CartItem } from "../../../types/cartItem";
 import { useState } from "react";
 import { cartItemCountState } from "../../../utils/atoms/cartItemCountState";
+import { authState } from "../../../utils/atoms/authState";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -22,7 +23,16 @@ const ProductDetail = () => {
 
   const setCartItemCount = useSetRecoilState(cartItemCountState);
 
+  const navigate = useNavigate();
+  const auth = useRecoilValue(authState);
+
   const addToCart = () => {
+    if (!auth.isLogin) {
+      alert("This service requires login.");
+      navigate("/login");
+      return;
+    }
+
     const newItem: CartItem = {
       id: product.id,
       image: product.image,
@@ -73,7 +83,7 @@ const ProductDetail = () => {
         <QuantitySelector value={quantity} onChange={setQuantity} />
         <span className={styles.btnWrap}>
           <Button variant="outlined" color="secondary" className={styles.cartBtn} onClick={addToCart}>
-            ADD TO CART
+            Add to cart
           </Button>
           <Button variant="outlined" color="secondary" className={styles.heartBtn}>
             <FontAwesomeIcon icon={faHeart} className={styles.heartIcon} />

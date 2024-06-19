@@ -2,18 +2,11 @@
 @import "../../../scss/abstracts/mixins";
 
 .Cart {
-  min-height: calc(100vh - 260px);
-  height: auto;
-  padding: 80px 0;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  width: 70%;
-  font-family: "Nunito Sans", sans-serif;
+  @include layout;
 
   .cartTop {
     h2 {
-      @include titleH2;
+      @include title-h2;
       margin-top: -20px;
     }
   }
@@ -109,7 +102,7 @@
     }
 
     .payment {
-      width: 20%;
+      width: 22%;
       padding: 0px 20px;
       display: flex;
       flex-direction: column;
@@ -118,13 +111,13 @@
       div {
         display: flex;
         flex-direction: column;
-        font-size: 15px;
         margin-bottom: 40px;
+        font-size: 15px;
 
         span {
-          margin-bottom: 4px;
           display: flex;
           justify-content: space-between;
+          margin-bottom: 4px;
         }
 
         span:nth-of-type(3) {
@@ -135,23 +128,12 @@
       }
 
       .cartBtn,
-      .heartBtn {
-        border-radius: 0;
-        font-size: 12px;
-        margin-right: 15px;
-        width: 100%;
-        height: 40px;
+      .shoppingBtn {
+        @include btn-column-common;
       }
 
       .cartBtn {
-        background-color: var(--color-secondary);
-        color: var(--color-primary);
-        border-color: var(--color-secondary);
-        margin-bottom: 10px;
-      }
-
-      .heartBtn {
-        border-color: var(--color-secondary);
+        @include btn-column-top;
       }
     }
   }

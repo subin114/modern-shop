@@ -2,9 +2,7 @@
 @import "../../../scss/abstracts/mixins";
 
 .Search {
-  min-height: calc(100vh - 260px);
-  height: auto;
-  padding: 80px 0;
+  @include layout;
 
   .productLength {
     font-size: 14px;
@@ -15,7 +13,7 @@
 
   .sectionWrap {
     .searchResult {
-      font-family: "Nunito Sans", sans-serif;
+      @include txt-normal;
       display: block;
       margin-bottom: 30px;
       padding-bottom: 20px;

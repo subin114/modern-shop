@@ -1,9 +1,10 @@
 @import "../../../scss/abstracts/variables";
+@import "../../../scss/abstracts/mixins";
 
 .Nav {
   width: 100%;
   height: auto;
-  font-family: "Raleway", sans-serif;
+  @include txt-point;
   position: relative;
   margin-bottom: 90px;
 

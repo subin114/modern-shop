@@ -10,6 +10,8 @@ import Digital from "../components/pages/Digital/Digital";
 import ProductDetail from "../components/pages/ProductDetail/ProductDetail";
 import NotFound from "../components/pages/NotFound/NotFound";
 import Cart from "../components/pages/Cart/Cart";
+import Login from "../components/pages/Login/Login";
+import SignUp from "../components/pages/SignUp/SignUp";
 
 const Router = () => {
   return (
@@ -25,6 +27,8 @@ const Router = () => {
       <Route path="/jewelery" element={<Jewelery />} />
       <Route path="/digital" element={<Digital />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signUp" element={<SignUp />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

@@ -1,15 +1,18 @@
+@import "../../../scss/abstracts/variables";
+@import "../../../scss/abstracts/mixins";
+
 .QuantitySelector {
-  font-family: "Nunito Sans", sans-serif;
+  @include txt-normal;
 
   span {
     text-align: center;
   }
 
   button {
-    cursor: pointer;
-    border: 1px solid #ccc;
     width: 24px;
     height: 24px;
+    border: 1px solid var(--color-light-gray);
+    cursor: pointer;
 
     .quantityIcon {
       font-size: 11px;
@@ -18,11 +21,11 @@
   }
 
   span {
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
     display: inline-block;
     width: 40px;
     height: 24px;
-    font-size: 15px;
+    font-size: 14px;
+    border-top: 1px solid var(--color-light-gray);
+    border-bottom: 1px solid var(--color-light-gray);
   }
 }

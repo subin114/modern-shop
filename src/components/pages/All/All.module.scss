@@ -1,31 +1,21 @@
-@import "../../../scss/abstracts/variables";
 @import "../../../scss/abstracts/mixins";
 
 .All {
-  height: auto;
-  width: 70%;
-  padding: 20px 0px;
-  margin: auto;
+  @include category-layout;
 
   .category {
-    margin-bottom: 30px;
-    border-bottom: 1px solid var(--color-drag);
-    padding: 20px 0px;
-    display: flex;
-    align-items: center;
+    @include category-specify;
 
     .arrowIcon {
-      font-size: 13px;
-      margin: 0 5px;
+      @include category-arrow-icon;
     }
   }
 
   h2 {
-    @include titleH2;
+    @include title-h2;
   }
 
   .sectionGrid {
-    display: flex;
-    justify-content: center;
+    @include category-section-grid;
   }
 }

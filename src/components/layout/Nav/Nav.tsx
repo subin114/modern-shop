@@ -43,7 +43,7 @@ const Nav = () => {
           <HeartIcon className={styles.icon} />
           <ShoppingBagIcon className={styles.icon} onClick={() => navigate("/cart")} />
           <Badge badgeContent={cartItemCount} className={styles.badge}></Badge>
-          <UserIcon className={styles.icon} />
+          <UserIcon className={styles.icon} onClick={() => navigate("/login")} />
           <span className={styles.mode}>
             <DarkMode />
           </span>
