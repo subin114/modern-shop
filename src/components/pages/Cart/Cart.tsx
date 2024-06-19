@@ -55,7 +55,7 @@ const Cart = () => {
               <th className={styles.num}>No.</th>
               <th className={styles.product}>Product</th>
               <th className={styles.title}>Title</th>
-              <th className={styles.count}>Count</th>
+              <th className={styles.count}>Quantity</th>
               <th className={styles.price}>Price</th>
               <th className={styles.delete}>Delete</th>
             </tr>
@@ -65,7 +65,9 @@ const Cart = () => {
               <tr key={idx}>
                 <th className={styles.num}>{idx + 1}</th>
                 <td className={styles.product}>
-                  <img src={item.image} alt={item.title} />
+                  <span>
+                    <img src={item.image} alt={item.title} />
+                  </span>
                 </td>
                 <td className={styles.title}>{item.title}</td>
                 <td className={styles.count}>
