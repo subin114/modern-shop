@@ -113,6 +113,8 @@
 
         span {
           margin-bottom: 4px;
+          display: flex;
+          justify-content: space-between;
         }
 
         span:nth-of-type(3) {

@@ -31,17 +31,15 @@ const ProductDetail = () => {
       quantity: quantity,
     };
 
-    setCartItems((prevCartItems) => {
-      const isItemExists = prevCartItems.some((item) => item.id === product.id);
+    const isItemExists = cartItems.some((item) => item.id === product.id);
 
-      if (isItemExists) {
-        return prevCartItems.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item
-        );
-      } else {
-        return [...prevCartItems, newItem];
-      }
-    });
+    if (isItemExists) {
+      setCartItems((prevCartItems) =>
+        prevCartItems.map((item) => (item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item))
+      );
+    } else {
+      setCartItems((prevCartItems) => [...prevCartItems, newItem]);
+    }
 
     setCartItemCount((prevCount) => prevCount + quantity);
   };

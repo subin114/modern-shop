@@ -15,22 +15,32 @@ const Cart = () => {
 
   const setCartItemCount = useSetRecoilState(cartItemCountState);
 
+  /** cart - quantity 값 변경 */
   const handleQuantityChange = (id: number, updateQuantity: number) => {
-    const updateCartItemsCount = cartItems.map((item) =>
-      item.id === id ? { ...item, quantity: updateQuantity } : item
-    );
+    const itemToUpdate = cartItems.find((item) => item.id === id);
+    if (itemToUpdate) {
+      /**
+       * ※ 수량 변경 시, 그 차이만큼 cartItemCount를 업데이트 해줌
+       * 수량 늘렸을 경우 : updateQuantity가 itemToUpdate.quantity보다 크기 때문에 차이값은 양수. 해당 값을 prevCount에 더해줌
+       * 수량 줄였을 경우 : updateQuantity가 itemToUpdate.quantity보다 작기 때문에 차이값은 음수. 해당 값을 prevCount에서 빼줌
+       */
+      const quantityDifference = updateQuantity - itemToUpdate.quantity;
+      setCartItemCount((prevCount) => prevCount + quantityDifference);
 
-    setCartItems(updateCartItemsCount);
+      setCartItems((prevCartItems) =>
+        prevCartItems.map((item) => (item.id === id ? { ...item, quantity: updateQuantity } : item))
+      );
+    }
   };
 
+  /**cart - product 삭제 */
   const handleDelete = (id: number) => {
     const deletedItem = cartItems.find((item) => item.id === id);
     if (deletedItem) {
       setCartItemCount((prevCount) => prevCount - deletedItem.quantity);
     }
 
-    const updateCartItems = cartItems.filter((item) => item.id !== id);
-    setCartItems(updateCartItems);
+    setCartItems((prevCartItems) => prevCartItems.filter((item) => item.id !== id));
   };
 
   return (
