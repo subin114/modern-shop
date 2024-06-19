@@ -6,11 +6,11 @@ const SignUp = () => {
     <div className={styles.SignUp}>
       <h2>Sign Up</h2>
       <form>
-        <div className={styles.fromGroup}>
+        <div className={styles.formGroup}>
           <label htmlFor="email">Email</label>
           <input type="email" id="email" required />
         </div>
-        <div className={styles.fromGroup}>
+        <div className={styles.formGroup}>
           <label htmlFor="email">Password</label>
           <input type="password" id="password" required />
         </div>

@@ -2,31 +2,21 @@
 @import "../../../scss/abstracts/mixins";
 
 .Login {
-  @include layout;
-  justify-content: center;
-  width: 18%;
+  @include login-layout;
 
   h2 {
     @include title-h2;
   }
 
-  .fromGroup {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
+  .formGroup {
+    @include login-formgroup;
 
     label {
-      margin-bottom: 3px;
-      font-size: 14px;
-      font-weight: 600;
+      @include login-formgroup-label;
     }
 
     input {
-      padding: 9px;
-      background-color: transparent;
-      color: var(--color-secondary);
-      border: 1px solid var(--color-tertiary);
-      border-radius: 2px;
+      @include login-formgroup-input;
     }
   }
 
