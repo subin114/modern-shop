@@ -24,6 +24,14 @@
     input {
       @include login-formgroup-input;
     }
+
+    .warning {
+      @include login-formgroup-alert;
+    }
+
+    .visible {
+      @include login-formgroup-alert-visible;
+    }
   }
 
   .signUpBtn {
