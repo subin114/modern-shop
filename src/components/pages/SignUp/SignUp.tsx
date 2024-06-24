@@ -36,7 +36,7 @@ const SignUp = () => {
     // 1. 이메일 유효성 검사
     if (!emailIsValid) {
       setEmailValid(false);
-      setEmailError("잘못된 이메일 형식입니다!!.");
+      setEmailError("잘못된 이메일 형식입니다.");
     } else {
       setEmailValid(true);
       setEmailError("");
@@ -45,7 +45,7 @@ const SignUp = () => {
     // 2. 비밀번호 유효성 검사
     if (!passwordIsValid) {
       setPasswordValid(false);
-      setPasswordError("비밀번호는 6~12자리 이어야 합니다!!.");
+      setPasswordError("비밀번호는 6~12자리 이어야 합니다.");
     } else {
       setPasswordValid(true);
       setPasswordError("");
