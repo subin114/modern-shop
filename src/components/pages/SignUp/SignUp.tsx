@@ -3,55 +3,86 @@ import { Button } from "@mui/material";
 import { useState } from "react";
 import { signUpWithEmailAndPassword } from "../../../firebase/firebaseAuth";
 import { useNavigate } from "react-router-dom";
-import { isValidEmail } from "../../../utils/isValidEmail";
 import clsx from "clsx";
+import { FirebaseCustomError } from "../../../types/FirebaseCustomError";
+import { isValidEmail } from "../../../utils/isValidEmail";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailValid, setEmailValid] = useState(true);
   const [passwordValid, setPasswordValid] = useState(true);
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-
-  const navigate = useNavigate();
+  const emailIsValid = isValidEmail(email);
+  const passwordIsValid = password.length >= 6 && password.length <= 12;
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
     if (name === "email") {
       setEmail(value);
-      setEmailValid(isValidEmail(value));
+      setEmailValid(true);
     } else if (name === "password") {
       setPassword(value);
-      if (value.length < 6 || value.length > 12) {
-        setPasswordValid(false);
-        setPasswordError("6~12자리의 비밀번호를 입력하세요");
-      } else {
-        setPasswordValid(true);
-        setPasswordError("");
-      }
+      setPasswordValid(true);
     }
   };
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // 1. 이메일 유효성 검사
+    if (!emailIsValid) {
+      setEmailValid(false);
+      setEmailError("잘못된 이메일 형식입니다!!.");
+    } else {
+      setEmailValid(true);
+      setEmailError("");
+    }
+
+    // 2. 비밀번호 유효성 검사
+    if (!passwordIsValid) {
+      setPasswordValid(false);
+      setPasswordError("비밀번호는 6~12자리 이어야 합니다!!.");
+    } else {
+      setPasswordValid(true);
+      setPasswordError("");
+    }
+
+    if (!emailIsValid || !passwordIsValid) {
+      return;
+    }
+
     try {
+      // 실제 계정 생성
       await signUpWithEmailAndPassword(email, password);
       console.log("Account created successfully");
       alert("Your account has been created!");
       navigate("/login");
     } catch (error) {
       console.error("Error creating account: ", error);
-      const firebaseError = error as { code?: string };
 
-      if (firebaseError.code === "auth/email-already-in-use") {
-        setEmailValid(false);
-        setEmailError("해당 이메일로 가입한 계정이 있습니다.");
-      } else {
-        setEmailValid(false);
-        setEmailError("회원가입 중 오류가 발생했습니다. 다시 시도해주세요.");
+      const firebaseError = (error as FirebaseCustomError).code;
+
+      switch (firebaseError) {
+        case "auth/email-already-in-use":
+          setEmailValid(false);
+          setEmailError("이미 사용 중인 이메일입니다.");
+          break;
+        case "auth/weak-password":
+          setPasswordValid(false);
+          setPasswordError("비밀번호는 6~12자리 이어야 합니다.");
+          break;
+        case "auth/invalid-email":
+          setEmailValid(false);
+          setEmailError("잘못된 이메일 형식입니다.");
+          break;
+        default:
+          setEmailValid(false);
+          setEmailError("오류가 발생했습니다. 다시 시도해 주세요.");
+          break;
       }
     }
   };
