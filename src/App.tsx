@@ -6,6 +6,7 @@ import Footer from "./components/layout/Footer/Footer";
 import "./App.scss";
 import { useState, useMemo, createContext, useEffect } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import AuthInitializer from "./firebase/AuthInitializer";
 
 /** paletteMode setting Fn */
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
@@ -64,8 +65,6 @@ function App() {
     [mode]
   );
 
-  // console.log("App theme mode:", mode);
-
   useEffect(() => {
     if (mode === "dark") {
       document.body.classList.add("dark-mode");
@@ -82,6 +81,7 @@ function App() {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <BrowserRouter>
+            <AuthInitializer />
             <Nav />
             <Router />
             <Footer />

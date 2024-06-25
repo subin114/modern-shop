@@ -58,7 +58,7 @@ const Login = () => {
     try {
       // 실제 계정으로 로그인
       await loginWithEmailAndPassword(email, password);
-      console.log("Account login successfully");
+      alert("로그인에 성공하였습니다.");
       navigate("/");
     } catch (error) {
       console.error("Error creating account: ", error);
