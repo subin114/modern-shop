@@ -1,22 +1,20 @@
 import styles from "./All.module.scss";
 import CategoryProduct from "../../common/CategoryProduct/CategoryProduct";
 import Dropdown from "../../ui/Dropdown/Dropdown";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { Outlet } from "react-router-dom";
+import BreadCrumbs from "../../ui/BreadCrumbs/BreadCrumbs";
 
 const All = () => {
   return (
     <div className={styles.All}>
-      <div className={styles.category}>
-        Category
-        <FontAwesomeIcon icon={faAngleRight} className={styles.arrowIcon} />
-        All
+      <div className={styles.categoryTopSection}>
+        <BreadCrumbs main={"Category"} sub={"All"} />
+        <span>
+          <h2>All Products</h2>
+          <Dropdown />
+        </span>
       </div>
-      <h2>All Products</h2>
-      <Dropdown />
       <CategoryProduct />
-
       <Outlet />
     </div>
   );

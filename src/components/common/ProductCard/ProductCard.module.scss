@@ -1,4 +1,5 @@
 @import "../../../scss/abstracts/variables";
+@import "../../../scss/abstracts/mixins";
 
 .ProductCard {
   width: 95%;
@@ -32,12 +33,12 @@
   }
 
   .productInfo {
+    @include txt-normal;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     font-size: 14px;
     font-weight: 500;
-    font-family: "Nunito Sans", sans-serif !important;
     letter-spacing: -0.5px;
     margin-top: 10px;
     color: var(--color-secondary);
@@ -52,10 +53,26 @@
   }
 }
 
+@media (min-width: 1201px) {
+  .ProductCard {
+    margin-bottom: 25px;
+
+    .productImg {
+      img {
+        width: 57% !important;
+      }
+    }
+  }
+}
+
 @media (max-width: 1200px) {
-  .productImg {
-    img {
-      width: 57% !important;
+  .ProductCard {
+    margin-bottom: 25px;
+
+    .productImg {
+      img {
+        width: 57% !important;
+      }
     }
   }
 }

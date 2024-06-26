@@ -1,10 +1,11 @@
+@import "../../../scss/abstracts/mixins";
+
 .Dropdown {
-  margin-bottom: 40px;
-  font-family: "Nunito Sans", sans-serif !important;
+  @include txt-normal;
 
   label,
   div,
   span {
-    font-family: "Nunito Sans", sans-serif !important;
+    @include txt-normal;
   }
 }

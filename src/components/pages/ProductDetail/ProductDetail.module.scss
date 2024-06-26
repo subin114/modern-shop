@@ -1,6 +1,8 @@
 @import "../../../scss/abstracts/variables";
+@import "../../../scss/abstracts/mixins";
 
 .ProductDetail {
+  @include txt-normal;
   width: 70%;
   min-height: 659px;
   height: auto;
@@ -9,10 +11,10 @@
   flex-direction: row;
   justify-content: space-between;
   margin: 0 auto;
-  font-family: "Nunito Sans", sans-serif !important;
 
   .productImg {
     width: 40%;
+    min-height: 400px;
     height: auto;
     display: flex;
     justify-content: center;
@@ -102,7 +104,7 @@
 
 @media (max-width: 1160px) {
   .ProductDetail {
-    width: 90%;
+    width: 100%;
     height: auto;
     padding: 80px 0;
     display: flex;
@@ -110,19 +112,19 @@
     justify-content: center;
 
     .productImg {
-      width: 80%;
+      width: 94%;
       height: 100%;
       margin: auto;
       margin-bottom: 40px;
 
       img {
-        width: 30%;
-        padding: 20px;
+        width: 40%;
+        padding: 40px;
       }
     }
     .productInfo {
       margin: auto;
-      width: 80%;
+      width: 94%;
       height: 100%;
 
       h2 {
@@ -137,6 +139,9 @@
 }
 
 @media (max-width: 700px) {
+  .ProductDetail {
+    width: 96%;
+  }
   .productInfo {
     h2 {
       display: flex;
@@ -146,6 +151,42 @@
       .price {
         margin-left: 0px !important;
         margin-top: 25px;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .ProductDetail {
+    width: 96%;
+    height: auto;
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .productImg {
+      width: 93%;
+      height: 100%;
+      margin: auto;
+      margin-bottom: 40px;
+
+      img {
+        width: 60%;
+        padding: 30px;
+      }
+    }
+    .productInfo {
+      margin: auto;
+      width: 93%;
+      height: 100%;
+
+      h2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 15px 0;
       }
     }
   }

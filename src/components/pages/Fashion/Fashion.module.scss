@@ -3,19 +3,28 @@
 .Fashion {
   @include category-layout;
 
-  .category {
-    @include category-specify;
+  .categoryTopSection {
+    @include category-header-wrap;
 
-    .arrowIcon {
-      @include category-arrow-icon;
+    span {
+      @include category-header;
+
+      h2 {
+        @include title-h2;
+        margin-bottom: 0px;
+      }
     }
   }
+}
 
-  h2 {
-    @include title-h2;
-  }
+@media (max-width: 500px) {
+  .categoryTopSection {
+    span {
+      @include category-header-media;
 
-  .sectionGrid {
-    @include category-section-grid;
+      h2 {
+        @include category-header-title-media;
+      }
+    }
   }
 }

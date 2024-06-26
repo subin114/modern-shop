@@ -1,0 +1,13 @@
+@import "../../../scss/abstracts/variables";
+@import "../../../scss/abstracts/mixins";
+
+.BreadCrumbs {
+  margin-bottom: 30px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-drag);
+
+  a,
+  p {
+    @include txt-normal;
+  }
+}
