@@ -58,43 +58,45 @@ const Cart = () => {
         <h2>Cart List</h2>
       </div>
       <div className={styles.cartBottom}>
-        <table>
-          <thead>
-            <tr>
-              <th className={styles.num}>No.</th>
-              <th className={styles.product}>Product</th>
-              <th className={styles.title}>Title</th>
-              <th className={styles.count}>Quantity</th>
-              <th className={styles.price}>Price</th>
-              <th className={styles.delete}>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cartItems.map((item, idx) => (
-              <tr key={idx}>
-                <th className={styles.num}>{idx + 1}</th>
-                <td className={styles.product}>
-                  <span>
-                    <img src={item.image} alt={item.title} />
-                  </span>
-                </td>
-                <td className={styles.title}>{item.title}</td>
-                <td className={styles.count}>
-                  <QuantitySelector
-                    value={item.quantity}
-                    onChange={(updateQuantity) => handleQuantityChange(item.id, updateQuantity)}
-                  />
-                </td>
-                <td className={styles.price}>${(item.price * item.quantity).toFixed(2)}</td>
-                <td className={styles.delete}>
-                  <IconButton aria-label="delete" size="small" onClick={() => handleDelete(item.id)}>
-                    <DeleteIcon fontSize="small" />
-                  </IconButton>
-                </td>
+        <div className={styles.tableWrap}>
+          <table>
+            <thead>
+              <tr>
+                <th className={styles.num}>No.</th>
+                <th className={styles.product}>Product</th>
+                <th className={styles.title}>Title</th>
+                <th className={styles.count}>Quantity</th>
+                <th className={styles.price}>Price</th>
+                <th className={styles.delete}>Delete</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {cartItems.map((item, idx) => (
+                <tr key={idx}>
+                  <th className={styles.num}>{idx + 1}</th>
+                  <td className={styles.product}>
+                    <span>
+                      <img src={item.image} alt={item.title} />
+                    </span>
+                  </td>
+                  <td className={styles.title}>{item.title}</td>
+                  <td className={styles.count}>
+                    <QuantitySelector
+                      value={item.quantity}
+                      onChange={(updateQuantity) => handleQuantityChange(item.id, updateQuantity)}
+                    />
+                  </td>
+                  <td className={styles.price}>${(item.price * item.quantity).toFixed(2)}</td>
+                  <td className={styles.delete}>
+                    <IconButton aria-label="delete" size="small" onClick={() => handleDelete(item.id)}>
+                      <DeleteIcon fontSize="small" />
+                    </IconButton>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
         <div className={styles.payment}>
           <div>
