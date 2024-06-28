@@ -17,7 +17,7 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 767px) {
   .categoryTopSection {
     span {
       @include category-header-media;

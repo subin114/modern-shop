@@ -134,77 +134,7 @@
       .cartBtn,
       .shoppingBtn {
         @include btn-column-common;
-      }
-
-      .cartBtn {
-        @include btn-column-top;
-      }
-    }
-  }
-}
-
-@media (max-width: 1600px) {
-  .cartBottom {
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100% !important;
-
-    .tableWrap {
-      width: 100% !important;
-      margin-bottom: 40px;
-
-      table {
         width: 100% !important;
-        height: auto;
-
-        tbody {
-          display: block;
-          width: 100%;
-          height: auto;
-
-          tr {
-            display: table;
-            width: 100%;
-            height: 90px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-bottom: 1px solid var(--color-tertiary-light);
-          }
-        }
-      }
-    }
-
-    .payment {
-      width: 300px !important;
-      padding: 0 !important;
-      display: flex;
-      flex-direction: column;
-      align-self: flex-end;
-
-      div {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 40px;
-        font-size: 15px;
-
-        span {
-          display: flex;
-          justify-content: space-between;
-          margin-bottom: 4px;
-        }
-
-        span:nth-of-type(3) {
-          margin-top: 10px;
-          padding-top: 10px;
-          border-top: 1px solid var(--color-tertiary-light);
-        }
-      }
-
-      .cartBtn,
-      .shoppingBtn {
-        @include btn-column-common;
       }
 
       .cartBtn {
@@ -214,7 +144,7 @@
   }
 }
 
-@media (max-width: 1350px) {
+@media (max-width: 1599px) {
   .Cart {
     width: 90% !important;
 
@@ -222,12 +152,74 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: flex-start;
-      width: 100%;
+      width: 100% !important;
+
+      .tableWrap {
+        width: 100% !important;
+        margin-bottom: 40px;
+
+        table {
+          width: 100% !important;
+          height: auto;
+
+          tbody {
+            display: block;
+            width: 100%;
+            height: auto;
+
+            tr {
+              display: table;
+              width: 100%;
+              height: 90px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border-bottom: 1px solid var(--color-tertiary-light);
+            }
+          }
+        }
+      }
+
+      .payment {
+        width: 300px !important;
+        padding: 0 !important;
+        display: flex;
+        flex-direction: column;
+        align-self: flex-end;
+
+        div {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 40px;
+          font-size: 15px;
+
+          span {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+          }
+
+          span:nth-of-type(3) {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--color-tertiary-light);
+          }
+        }
+
+        .cartBtn,
+        .shoppingBtn {
+          @include btn-column-common;
+        }
+
+        .cartBtn {
+          @include btn-column-top;
+        }
+      }
     }
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 767px) {
   .Cart {
     width: 90% !important;
 
@@ -257,6 +249,28 @@
       .payment {
         width: 100% !important;
         margin: auto;
+
+        .btnWrap {
+          width: 100% !important;
+          height: auto;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          .cartBtn,
+          .shoppingBtn {
+            @include btn-column-common;
+            margin-bottom: 0 !important;
+          }
+
+          .cartBtn {
+            @include btn-column-top;
+          }
+
+          .shoppingBtn {
+            margin-right: 0;
+          }
+        }
       }
     }
   }

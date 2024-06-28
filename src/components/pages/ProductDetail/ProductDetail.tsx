@@ -12,6 +12,7 @@ import { CartItem } from "../../../types/cartItem";
 import { useState } from "react";
 import { cartItemCountState } from "../../../utils/atoms/cartItemCountState";
 import { authState } from "../../../utils/atoms/authState";
+import Spinner from "../../ui/Spinner/Spinner";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -55,7 +56,11 @@ const ProductDetail = () => {
   };
 
   if (productLoadable.state === "loading") {
-    return <div>Loading...</div>;
+    return (
+      <>
+        <Spinner />
+      </>
+    );
   }
 
   if (productLoadable.state === "hasError") {

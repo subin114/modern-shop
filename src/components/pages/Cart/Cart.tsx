@@ -110,12 +110,19 @@ const Cart = () => {
               <b>Total Amount :</b> ${cartItems.reduce((acc, cur) => acc + cur.price * cur.quantity, 0).toFixed(2)}
             </span>
           </div>
-          <Button variant="outlined" color="secondary" className={styles.cartBtn} onClick={handleProceedToCheckout}>
-            Proceed to checkout
-          </Button>
-          <Button variant="outlined" color="secondary" className={styles.shoppingBtn} onClick={() => navigate("/all")}>
-            Continue shopping
-          </Button>
+          <div className={styles.btnWrap}>
+            <Button variant="outlined" color="secondary" className={styles.cartBtn} onClick={handleProceedToCheckout}>
+              Proceed to checkout
+            </Button>
+            <Button
+              variant="outlined"
+              color="secondary"
+              className={styles.shoppingBtn}
+              onClick={() => navigate("/all")}
+            >
+              Continue shopping
+            </Button>
+          </div>
         </div>
       </div>
     </div>
