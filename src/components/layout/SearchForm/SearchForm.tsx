@@ -24,8 +24,8 @@ const SearchInput = () => {
 
   return (
     <form className={styles.SearchForm} onSubmit={handleSearch}>
-      <SearchIcon className={styles.icon} />
       <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="search" />
+      <SearchIcon className={styles.icon} />
     </form>
   );
 };
