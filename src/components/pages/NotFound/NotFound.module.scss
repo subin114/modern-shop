@@ -22,3 +22,22 @@
     font-size: 15px;
   }
 }
+
+@media (max-width: 479px) {
+  .NotFound {
+    width: 90%;
+
+    strong {
+      font-size: 80px;
+    }
+
+    span {
+      font-size: 17px;
+    }
+
+    p {
+      font-size: 13px;
+      text-align: center;
+    }
+  }
+}

@@ -3,6 +3,9 @@
 
 .Search {
   @include category-layout;
+  min-height: calc(100vh - 260px);
+  height: auto;
+  padding-bottom: 60px;
 
   .sectionWrap {
     .searchResult {
