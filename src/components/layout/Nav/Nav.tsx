@@ -15,6 +15,7 @@ import { signOut } from "../../../firebase/firebaseAuth";
 import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import clsx from "clsx";
 // import { signOut } from "firebase/auth";
 // import { authService } from "../../../firebase/firebase";
 
@@ -28,6 +29,11 @@ const Nav = () => {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const handleLinkClick = (category: string) => {
+    setCategory(category);
+    setIsMobileMenuOpen(false);
   };
 
   // const setAuthState = useSetRecoilState(authState);
@@ -57,20 +63,20 @@ const Nav = () => {
       </div>
 
       {isMobileMenuOpen && (
-        <div className={styles.mobileMenu}>
+        <div className={clsx(styles.mobileMenu, { [styles.open]: isMobileMenuOpen })}>
           <div className={styles.closeIconWrap}>
             <CloseIcon className={styles.closeIcon} onClick={toggleMobileMenu} />
           </div>
-          <Link to="/all" className={styles.menu} onClick={() => setCategory("All")}>
+          <Link to="/all" className={styles.menu} onClick={() => handleLinkClick("All")}>
             All
           </Link>
-          <Link to="/fashion" className={styles.menu} onClick={() => setCategory("Fashion")}>
+          <Link to="/fashion" className={styles.menu} onClick={() => handleLinkClick("Fashion")}>
             Fashion
           </Link>
-          <Link to="jewelery" className={styles.menu} onClick={() => setCategory("Jewelery")}>
+          <Link to="jewelery" className={styles.menu} onClick={() => handleLinkClick("Jewelery")}>
             Jewelery
           </Link>
-          <Link to="/digital" className={styles.menu} onClick={() => setCategory("Digital")}>
+          <Link to="/digital" className={styles.menu} onClick={() => handleLinkClick("Digital")}>
             Digital
           </Link>
           <span className={styles.searchBarMobile}>
@@ -88,16 +94,16 @@ const Nav = () => {
       {/* pc */}
       <div className={styles.NavBottom}>
         <div className={styles.menus}>
-          <Link to="/all" className={styles.menu} onClick={() => setCategory("All")}>
+          <Link to="/all" className={styles.menu} onClick={() => handleLinkClick("All")}>
             All
           </Link>
-          <Link to="/fashion" className={styles.menu} onClick={() => setCategory("Fashion")}>
+          <Link to="/fashion" className={styles.menu} onClick={() => handleLinkClick("Fashion")}>
             Fashion
           </Link>
-          <Link to="jewelery" className={styles.menu} onClick={() => setCategory("Jewelery")}>
+          <Link to="jewelery" className={styles.menu} onClick={() => handleLinkClick("Jewelery")}>
             Jewelery
           </Link>
-          <Link to="/digital" className={styles.menu} onClick={() => setCategory("Digital")}>
+          <Link to="/digital" className={styles.menu} onClick={() => handleLinkClick("Digital")}>
             Digital
           </Link>
         </div>

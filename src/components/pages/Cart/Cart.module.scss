@@ -131,6 +131,10 @@
         }
       }
 
+      .modalBtnWrap {
+        margin-bottom: 0;
+      }
+
       .cartBtn,
       .shoppingBtn {
         @include btn-column-common;

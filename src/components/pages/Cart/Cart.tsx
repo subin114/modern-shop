@@ -1,6 +1,6 @@
 // import "daisyui/dist/full.css";
 import styles from "./Cart.module.scss";
-import { IconButton, Button } from "@mui/material";
+import { IconButton, Button, Stack } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import QuantitySelector from "./../../ui/QuantitySelector/QuantitySelector";
 import { cartItemState } from "../../../utils/atoms/cartItemState";
@@ -8,11 +8,31 @@ import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 import { cartItemCountState } from "../../../utils/atoms/cartItemCountState";
 import { authState } from "../../../utils/atoms/authState";
+import { useState } from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 500,
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  p: 4,
+};
 
 const Cart = () => {
   const navigate = useNavigate();
   const [cartItems, setCartItems] = useRecoilState(cartItemState);
   const setCartItemCount = useSetRecoilState(cartItemCountState);
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const auth = useRecoilValue(authState);
 
   /** 로그인 상태 확인 */
@@ -21,6 +41,8 @@ const Cart = () => {
       alert("This service requires login.");
       navigate("/login");
       return;
+    } else {
+      handleOpen();
     }
   };
 
@@ -50,6 +72,18 @@ const Cart = () => {
     }
 
     setCartItems((prevCartItems) => prevCartItems.filter((item) => item.id !== id));
+  };
+
+  /** modal - cancel */
+  const handleCancel = () => {
+    handleClose();
+  };
+
+  /** modal - institute */
+  const handleInstitute = () => {
+    setCartItems([]);
+    setCartItemCount(0);
+    handleClose();
   };
 
   return (
@@ -111,9 +145,54 @@ const Cart = () => {
             </span>
           </div>
           <div className={styles.btnWrap}>
-            <Button variant="outlined" color="secondary" className={styles.cartBtn} onClick={handleProceedToCheckout}>
-              Proceed to checkout
-            </Button>
+            <div className={styles.modalBtnWrap}>
+              <Button variant="outlined" color="secondary" className={styles.cartBtn} onClick={handleProceedToCheckout}>
+                Proceed to checkout
+              </Button>
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <Box sx={style}>
+                  <Typography
+                    id="modal-modal-title"
+                    variant="h6"
+                    component="h2"
+                    sx={{ fontFamily: "'Nunito Sans', sans-serif" }}
+                  >
+                    Would you like to purchase the product?
+                  </Typography>
+                  <Typography id="modal-modal-description" sx={{ mt: 1, fontFamily: "'Nunito Sans', sans-serif" }}>
+                    All products in your shopping cart will be deleted.
+                  </Typography>
+                  <Stack spacing={2} direction="row" sx={{ justifyContent: "flex-end", mt: 3 }}>
+                    <Button
+                      variant="outlined"
+                      color="secondary"
+                      sx={{ fontFamily: "'Nunito Sans', sans-serif", fontSize: "12.5px", borderRadius: "2px" }}
+                      onClick={handleCancel}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      sx={{
+                        fontFamily: "'Nunito Sans', sans-serif",
+                        boxShadow: "none",
+                        fontSize: "12.5px",
+                        borderRadius: "2px",
+                      }}
+                      onClick={handleInstitute}
+                    >
+                      Institute
+                    </Button>
+                  </Stack>
+                </Box>
+              </Modal>
+            </div>
             <Button
               variant="outlined"
               color="secondary"
