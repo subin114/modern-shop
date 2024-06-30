@@ -6,12 +6,17 @@ import Footer from "./components/layout/Footer/Footer";
 import "./App.scss";
 import { useState, useMemo, createContext, useEffect } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import AuthInitializer from "./firebase/AuthInitializer";
+import { onAuthStateChanged } from "firebase/auth";
+import { useSetRecoilState } from "recoil";
+import { authState } from "./utils/atoms/authState";
+import { authService } from "./firebase/firebase";
 
 /** paletteMode setting Fn */
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
 function App() {
+  const setAuthState = useSetRecoilState(authState);
+
   const [mode, setMode] = useState<"light" | "dark">("light");
   const colorMode = useMemo(
     () => ({
@@ -75,13 +80,24 @@ function App() {
     }
   }, [mode]);
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(authService, (user) => {
+      if (user) {
+        setAuthState({ isLogin: true, user });
+      } else {
+        setAuthState({ isLogin: false, user: null });
+      }
+    });
+
+    return () => unsubscribe();
+  }, [setAuthState]);
+
   return (
     <>
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <BrowserRouter>
-            <AuthInitializer />
             <Nav />
             <Router />
             <Footer />

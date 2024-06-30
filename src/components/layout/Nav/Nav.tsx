@@ -11,13 +11,12 @@ import SearchForm from "../SearchForm/SearchForm";
 import { Badge } from "@mui/material";
 import { cartItemCountState } from "../../../utils/atoms/cartItemCountState";
 import { authState } from "../../../utils/atoms/authState";
-import { signOut } from "../../../firebase/firebaseAuth";
 import { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import clsx from "clsx";
-// import { signOut } from "firebase/auth";
-// import { authService } from "../../../firebase/firebase";
+import { signOut } from "firebase/auth";
+import { authService } from "../../../firebase/firebase";
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -36,18 +35,15 @@ const Nav = () => {
     setIsMobileMenuOpen(false);
   };
 
-  // const setAuthState = useSetRecoilState(authState);
-
-  // const handleLogout = async () => {
-  //   try {
-  //     await signOut();
-  //     setAuthState({ isLogin: false, user: null });
-  //     console.log("로그아웃 되었습니다.");
-  //     alert("로그아웃 되었습니다.");
-  //   } catch (error) {
-  //     console.error("Error logging out: ", error);
-  //   }
-  // };
+  const handleSignOut = async () => {
+    try {
+      await signOut(authService);
+      alert("로그아웃 되었습니다.");
+      navigate("/login");
+    } catch (error) {
+      console.error("Error during sign out: ", error);
+    }
+  };
 
   return (
     <div className={styles.Nav}>
@@ -86,7 +82,7 @@ const Nav = () => {
             <HeartIcon className={styles.icon} />
             <ShoppingBagIcon className={styles.icon} onClick={() => navigate("/cart")} />
             <Badge badgeContent={cartItemCount} className={styles.badge}></Badge>
-            <UserIcon className={styles.icon} onClick={isLogin ? signOut : () => navigate("/login")} />
+            <UserIcon className={styles.icon} onClick={isLogin ? handleSignOut : () => navigate("/login")} />
           </span>
         </div>
       )}
@@ -116,8 +112,8 @@ const Nav = () => {
           <HeartIcon className={styles.icon} />
           <ShoppingBagIcon className={styles.icon} onClick={() => navigate("/cart")} />
           <Badge badgeContent={cartItemCount} className={styles.badge}></Badge>
-          <UserIcon className={styles.icon} onClick={isLogin ? signOut : () => navigate("/login")} />
-          {/* <UserIcon className={styles.icon} onClick={isLogin ? handleLogout : () => navigate("/login")} /> */}
+          <UserIcon className={styles.icon} onClick={isLogin ? handleSignOut : () => navigate("/login")} />
+
           <span className={styles.mode}>
             <DarkMode />
           </span>

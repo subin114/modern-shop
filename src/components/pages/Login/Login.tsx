@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 import { useState } from "react";
 import { isValidEmail } from "../../../utils/isValidEmail";
 import clsx from "clsx";
-import { loginWithEmailAndPassword } from "../../../firebase/firebaseAuth";
+import { signIn } from "../../../firebase/firebaseAuth";
 import { FirebaseCustomError } from "../../../types/FirebaseCustomError";
 
 const Login = () => {
@@ -57,7 +57,7 @@ const Login = () => {
 
     try {
       // 실제 계정으로 로그인
-      await loginWithEmailAndPassword(email, password);
+      await signIn(email, password);
       alert("로그인에 성공하였습니다.");
       navigate("/");
     } catch (error) {

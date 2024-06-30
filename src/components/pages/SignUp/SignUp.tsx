@@ -1,7 +1,7 @@
 import styles from "./SignUp.module.scss";
 import { Button } from "@mui/material";
 import { useState } from "react";
-import { signUpWithEmailAndPassword } from "../../../firebase/firebaseAuth";
+import { signUp } from "../../../firebase/firebaseAuth";
 import { useNavigate } from "react-router-dom";
 import clsx from "clsx";
 import { FirebaseCustomError } from "../../../types/FirebaseCustomError";
@@ -57,7 +57,7 @@ const SignUp = () => {
 
     try {
       // 실제 계정 생성
-      await signUpWithEmailAndPassword(email, password);
+      await signUp(email, password);
       console.log("Account created successfully");
       alert("Your account has been created!");
       navigate("/login");

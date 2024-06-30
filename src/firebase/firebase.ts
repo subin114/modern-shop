@@ -1,6 +1,6 @@
-import { initializeApp, getApps, getApp } from "firebase/app";
-import { browserSessionPersistence, getAuth, setPersistence } from "firebase/auth";
+import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { browserSessionPersistence, getAuth, setPersistence } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIRESTORE_API_KEY,
@@ -11,8 +11,7 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_APP_ID,
 };
 
-// export const app = initializeApp(firebaseConfig);
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+export const app = initializeApp(firebaseConfig);
 export const authService = getAuth(app);
 export const db = getFirestore(app);
 
