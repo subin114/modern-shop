@@ -11,7 +11,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import { Badge } from "@mui/material";
 import { cartItemCountState } from "../../../utils/atoms/cartItemCountState";
 import { authState } from "../../../utils/atoms/authState";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import clsx from "clsx";
@@ -30,8 +30,23 @@ const Nav = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const handleResize = () => {
+    if (window.innerWidth >= 1200) {
+      setIsMobileMenuOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const handleLinkClick = (category: string) => {
     setCategory(category);
+    setIsMobileMenuOpen(false);
+  };
+
+  const handleOverlayClick = () => {
     setIsMobileMenuOpen(false);
   };
 
@@ -57,6 +72,13 @@ const Nav = () => {
           <DarkMode />
         </span>
       </div>
+
+      {isMobileMenuOpen && (
+        <div
+          className={clsx(styles.mobileOverlay, { [styles.open]: isMobileMenuOpen })}
+          onClick={handleOverlayClick}
+        ></div>
+      )}
 
       {isMobileMenuOpen && (
         <div className={clsx(styles.mobileMenu, { [styles.open]: isMobileMenuOpen })}>

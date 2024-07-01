@@ -141,10 +141,10 @@
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     // transition: transform 0.3s ease;
-    // transform: translateX(0);
+    // transform: translateX(-100%);
 
-    // .mobileMenu.open {
-    //   transform: translateX(60%);
+    // &.open {
+    //   // transform: translateX(0);
     // }
 
     .closeIconWrap {
@@ -205,6 +205,21 @@
         }
       }
     }
+  }
+
+  .mobileOverlay {
+    position: fixed;
+    top: 25px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 25px);
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: none;
+  }
+
+  .mobileOverlay.open {
+    display: block;
   }
 }
 
