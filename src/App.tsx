@@ -17,11 +17,18 @@ export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 function App() {
   const setAuthState = useSetRecoilState(authState);
 
-  const [mode, setMode] = useState<"light" | "dark">("light");
+  const [mode, setMode] = useState<"light" | "dark">(
+    () => (sessionStorage.getItem("themeMode") as "light" | "dark") || "light"
+  );
+
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+        setMode((prevMode) => {
+          const newMode = prevMode === "light" ? "dark" : "light";
+          sessionStorage.setItem("themeMode", newMode);
+          return newMode;
+        });
       },
     }),
     []
@@ -81,10 +88,13 @@ function App() {
   }, [mode]);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(authService, (user) => {
+    const unsubscribe = onAuthStateChanged(authService, async (user) => {
+      const userState = JSON.parse(JSON.stringify(user));
       if (user) {
-        setAuthState({ isLogin: true, user });
+        console.log("User is logged in:", user);
+        setAuthState({ isLogin: true, user: userState });
       } else {
+        console.log("User is logged out");
         setAuthState({ isLogin: false, user: null });
       }
     });
